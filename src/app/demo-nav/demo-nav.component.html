@@ -1,0 +1,81 @@
+<mat-sidenav-container class="sidenav-container" autosize [hasBackdrop]="(isHandset | async)!.matches">
+	<mat-sidenav #drawer class="mat-elevation-z2" [ngClass]="((isHandset | async)!.matches)?'widenav':''" fixedInViewport="true"
+	 [attr.role]="isHandset ? 'dialog' : 'navigation'" [mode]="((isHandset | async)!.matches||(hovering&&!open)) ? 'over' : 'side'"
+	 [opened]="!(isHandset | async)!.matches||hovering">
+		<mat-nav-list fxLayout="column" fxFlexFill style="padding-top:0; overflow-x:hidden" [@navstate]="open||hovering ? 'open' : 'compact'">
+			<mat-toolbar style="background-color:#007bc1; color:white;" *ngIf="(isHandset | async)!.matches">
+				<mat-toolbar-row style="height:72px; margin-left: 10px; margin-bottom: 42px;">
+					<mat-icon style="font-size:64px; transform:rotate(42deg);">offline_bolt</mat-icon>
+				</mat-toolbar-row>
+				<mat-toolbar-row style="height:4px;">
+					<small>User Name</small>
+				</mat-toolbar-row>
+				<mat-toolbar-row (click)="logout=!logout" fxLayout="row" style="cursor:pointer;">
+					<small fxFlex>User@email.com</small>
+					<mat-icon *ngIf="!logout">expand_more</mat-icon>
+					<mat-icon *ngIf="logout">expand_less</mat-icon>
+				</mat-toolbar-row>
+			</mat-toolbar>
+			<mat-toolbar *ngIf="!(isHandset | async)!.matches">
+				<button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="open=!open" style="margin-left:-4px;">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+			</mat-toolbar>
+			<section [@slide] *ngIf="!logout" fxLayout="column" (mouseover)="hovering=true" (mouseleave)="restoreIconNav()">
+				<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/alert">
+					<mat-icon matListIcon>move_to_inbox</mat-icon>
+					Alerts
+				</a>
+				<a mat-list-item [routerLinkActive]="['primaryLink']">
+					<mat-icon matListIcon>send</mat-icon>
+					Schedule
+				</a>
+				<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/products">
+					<mat-icon matListIcon>folder</mat-icon>
+					Products
+				</a>
+				<a mat-list-item [routerLinkActive]="['primaryLink']">
+					<mat-icon matListIcon>info</mat-icon>
+					Event Log
+				</a>
+				<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/settings">
+					<mat-icon matListIcon>settings</mat-icon>
+					Settings
+				</a>
+
+			</section>
+			<section [@slide] *ngIf="logout" (mouseover)="hovering=true" (mouseleave)="hovering=false">
+				<h3 matSubheader style="margin-top:4px;">User Account</h3>
+				<mat-divider></mat-divider>
+				<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/alert">
+					<mat-icon matListIcon>settings</mat-icon>
+					User Profile
+				</a>
+				<a mat-list-item [routerLinkActive]="['primaryLink']">
+					<mat-icon matListIcon>subdirectory_arrow_right</mat-icon>
+					Log Out
+				</a>
+			</section>
+			<div fxFlex></div>
+			<mat-divider></mat-divider>
+			<section (mouseover)="hovering=true" (mouseleave)="hovering=false">
+				<a mat-list-item [routerLinkActive]="['primaryLink']">
+					<mat-icon matListIcon>flag</mat-icon>
+					User Guide
+				</a>
+				<a mat-list-item [routerLinkActive]="['primaryLink']">
+					<mat-icon matListIcon>local_offer</mat-icon>
+					License Agreement
+				</a>
+			</section>
+		</mat-nav-list>
+	</mat-sidenav>
+	<mat-sidenav-content>
+		<mat-toolbar style="position: absolute;top: 0;">
+			<button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.open()" style="z-index:20000;" *ngIf="(isHandset | async)!.matches">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+		</mat-toolbar>
+		<router-outlet></router-outlet>
+	</mat-sidenav-content>
+</mat-sidenav-container>
