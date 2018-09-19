@@ -1,6 +1,6 @@
 # Full/Responsive Side Navigation Example
 
-[![CircleCI](https://circleci.com/gh/pxblue/icon-navigation/tree/master.svg?style=shield)](https://circleci.com/gh/pxblue/icon-navigation/tree/master)
+[![CircleCI](https://circleci.com/gh/pxblue/icon-navigation/tree/react.svg?style=shield)](https://circleci.com/gh/pxblue/icon-navigation/tree/react)
 
 This is a sample application showing how to build a full-featured, responsive navigation drawer with routing. At desktop size, the navigation bar appears as a series of icons that can be expanded to a full menu. At mobile resolution, the navigation menu is a basic slide-out drawer activated from the menu icon in the top left.
 
