@@ -1,0 +1,61 @@
+* {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: -moz-none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+body, h1, h2, h3, h4, p {
+  font-family: OpenSans, Arial, Helvetica, sans-serif;
+  margin: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-before: 0;
+}
+
+.flexVert{
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.flexHor{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flexVertBottom{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.listItemSelected{
+  position: relative;
+}
+.listItemSelected:hover{
+  background-color: transparent !important;
+}
+.listItemSelected.open::before{
+  content: '';
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  width: calc(100% - 8px);
+  left: 0;
+  top: 0;
+  background-color: rgba(0,123,193,.15);
+  border-radius: 0px 24px 24px 0px;
+}
+.listItemSelected.open:hover::before{
+  background-color: rgba(0,123,193,.2);
+}
+.listItemSelected .listItemText {
+  color: #007bc1; /* TODO: find a way to get this from the theme */
+  font-weight: 600;
+}
+.listItemSelected .listIcon {
+  color: #007bc1; /* TODO: find a way to get this from the theme */
+}
