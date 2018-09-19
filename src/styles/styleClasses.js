@@ -3,7 +3,7 @@
   method that allows for custom style overrides of the default component visuals.
 */
 import React from 'react';
-import {EatonColors} from '@pxblue/themes/react/src';
+import {EatonColors} from '@pxblue/themes/react';
 
 const styles = theme => ({
   flush: {
