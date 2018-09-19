@@ -1,7 +1,7 @@
 // React/Material/PXBlue Basics
   import { Switch, Route, NavLink } from 'react-router-dom'
   import React from 'react';
-  import {EatonColors} from '@pxblue/themes/react/src';
+  import {EatonColors} from '@pxblue/themes/react';
   import { withStyles } from '@material-ui/core/styles';
 
 // Material-UI Components
