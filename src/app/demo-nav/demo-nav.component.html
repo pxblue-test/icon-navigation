@@ -1,6 +1,6 @@
 <mat-sidenav-container class="sidenav-container" autosize [hasBackdrop]="(isHandset | async)!.matches">
 	<mat-sidenav #drawer class="mat-elevation-z2" [ngClass]="((isHandset | async)!.matches)?'widenav':''" fixedInViewport="true"
-	 [attr.role]="isHandset ? 'dialog' : 'navigation'" [mode]="((isHandset | async)!.matches||(hovering&&!open)) ? 'over' : 'side'"
+	 [attr.role]="isHandset ? 'dialog' : 'navigation'" [mode]="(isHandset | async)!.matches ? 'over' : 'side'"
 	 [opened]="!(isHandset | async)!.matches||hovering">
 		<mat-nav-list fxLayout="column" fxFlexFill style="padding-top:0; overflow-x:hidden" [@navstate]="open||hovering ? 'open' : 'compact'">
 			<mat-toolbar style="background-color:#007bc1; color:white;" *ngIf="(isHandset | async)!.matches">
@@ -16,7 +16,7 @@
 					<mat-icon *ngIf="logout">expand_less</mat-icon>
 				</mat-toolbar-row>
 			</mat-toolbar>
-			<mat-toolbar *ngIf="!(isHandset | async)!.matches">
+			<mat-toolbar style="background-color:white" *ngIf="!(isHandset | async)!.matches">
 				<button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="open=!open" style="margin-left:-4px;">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
@@ -71,7 +71,7 @@
 		</mat-nav-list>
 	</mat-sidenav>
 	<mat-sidenav-content>
-		<mat-toolbar style="position: absolute;top: 0;">
+		<mat-toolbar style="z-index:-5000;position: absolute;top: 0;">
 			<button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.open()" style="z-index:20000;" *ngIf="(isHandset | async)!.matches">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
