@@ -260,7 +260,8 @@ class App extends React.Component {
               ))
           } 
           style={{ 
-            height: '100%'
+            height: '100%',
+            overflowX: 'hidden'
           }}
         > 
           <Toolbar className={classes.flush + ' ' + classes.drawerWidthFull}>
