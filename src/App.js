@@ -46,7 +46,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       showUserMenu: false,
-      drawerOpen: false
+      drawerOpen: false,
+      drawerHover: false
     }
   }
 
@@ -62,13 +63,20 @@ class App extends React.Component {
     const { classes } = this.props;
     return (
       <div>
-        {this.getMobileNavigationMenu()}
-        <div>
+        <Hidden smUp>
+          {this.getMobileNavigationMenu()}
+        </Hidden>
+        <Hidden xsDown>
+          {this.getDesktopNavigationMenu()}
+        </Hidden>
+        <div className={this.state.drawerOpen ? classes.drawerMarginFull : classes.drawerMargin}>
           <AppBar position="static" color="primary">
             <Toolbar className={classes.toolbar}>
-              <IconButton color="inherit" onClick={() => this.toggleDrawer()}>
-                <MenuIcon/>
-              </IconButton>
+              <Hidden smUp>
+                <IconButton color="inherit" onClick={() => this.toggleDrawer()}>
+                  <MenuIcon/>
+                </IconButton>
+              </Hidden>
               <Typography variant="title" color="inherit">Selected Page Name</Typography>
             </Toolbar>
           </AppBar>
@@ -93,7 +101,8 @@ class App extends React.Component {
         <ListSubheader 
           className={classes.subheader}
           style={{
-            position: 'unset'
+            position: 'unset', 
+            color: (this.state.drawerOpen || this.state.drawerHover ? '' : 'transparent')
           }}
         >
           Monitor
@@ -138,14 +147,17 @@ class App extends React.Component {
           <ListSubheader 
             className={classes.subheader}
             style={{
-              position: 'unset' 
+              display: 'flex',
+              width: '100%',
+              flexWrap: 'wrap',
+              color: (this.state.drawerOpen || this.state.drawerHover ? '' : 'transparent')
             }}
-          >About
+          ><span style={{flex: '0 0 auto'}}>About</span>
             <span 
               style={{ 
-                position: 'absolute', 
-                right: '0px', 
-                paddingRight: '16px' 
+                flex: '1 1 0px',
+                textAlign: 'right',
+                whiteSpace: 'nowrap'
               }}
             >Software Version v1.0.3</span>
           </ListSubheader>
@@ -173,7 +185,8 @@ class App extends React.Component {
         <ListSubheader 
           className={classes.subheader}
           style={{
-            position: 'unset'
+            position: 'unset', 
+            color: (this.state.drawerOpen || this.state.drawerHover ? '' : 'transparent')
           }}
         >User Account</ListSubheader>
       }>
@@ -196,7 +209,7 @@ class App extends React.Component {
   getUserDetails(){
     const {classes} = this.props;
     return (
-      <div className={"flexVertBottom " + classes.header} >
+      <div className={"flexVertBottom " + classes.header}>
         <Circle/>
         <div 
           style={{ 
@@ -224,6 +237,59 @@ class App extends React.Component {
     );
   }
 
+  // returns the navigation drawer used at desktop resolution
+  getDesktopNavigationMenu(){
+    const { classes } = this.props;
+    return (
+      <Drawer 
+        variant="permanent" 
+        open={true} 
+        onClose={() => this.toggleDrawer()}
+      >
+        <div 
+          className={"flexVert " + (this.state.drawerHover ? classes.drawerWidthFull : 
+              (this.state.drawerOpen ? 
+                classes.drawerWidthFull : 
+                classes.drawerWidthCollapsed
+              ))
+          } 
+          style={{ 
+            height: '100%',
+            overflowX: 'hidden'
+          }}
+        > 
+          <Toolbar className={classes.flush + ' ' + classes.drawerWidthFull}>
+            <IconButton 
+              color="inherit" 
+              onClick={() => this.toggleDrawer()}
+            ><MenuIcon/></IconButton>
+            {(this.state.drawerOpen || this.state.drawerHover) && 
+              <Typography variant="title" color="inherit">Product Name / Logo</Typography>
+            }
+          </Toolbar>
+          <Divider />
+          <div 
+            className={classes.drawerWidthFull} 
+            style={{
+              flex: '1 1 0px', 
+              overflowY: 'auto',
+              overflowX: 'hidden'
+            }} 
+            onMouseEnter={() => this.setState({drawerHover: true})} 
+            onMouseLeave={() => this.setState({drawerHover: false})}
+          >
+            {this.state.showUserMenu ? this.getUserNavigation() : this.getPrimaryNavigation()}
+            <div style={{ flex: '1 1 0px' }} />
+            <Divider />
+            {this.getSecondaryNavigation()}
+            <Divider />
+            {this.getUserNavigation()}
+          </div>
+        </div>
+      </Drawer>
+    );
+  }
+
   // returns the navigation drawer used at mobile resolution
   getMobileNavigationMenu(){
     const { classes } = this.props;
@@ -237,11 +303,12 @@ class App extends React.Component {
           className={"flexVert"} 
           style={{ 
             height: '100%', 
-            width: '100%' 
+            width: '100%' ,
+            overflowX: 'hidden'
           }}
         > 
           {this.getUserDetails()}
-          <div style={{flex: '1 1 0px', overflowY: 'auto'}}>
+          <div style={{flex: '1 1 0px', overflowY: 'auto', overflowX: 'hidden'}}>
             {this.state.showUserMenu ? this.getUserNavigation() : this.getPrimaryNavigation()}
             <div style={{ flex: '1 1 0px' }} />
             <Divider />
@@ -254,8 +321,8 @@ class App extends React.Component {
 
   NavigationListItem = ({title, route, icon}) => {
     const {classes} = this.props;
-    const open = (this.state.drawerOpen);
-    const action = () => this.setState({drawerOpen: false});
+    const open = (this.state.drawerHover || this.state.drawerOpen);
+    const action = () => this.setState({drawerOpen: false, drawerHover: false});
     return (
       <ListItem 
         className={classes.listItem + (open ? ' open' : '')} 
