@@ -71,8 +71,8 @@
 		</mat-nav-list>
 	</mat-sidenav>
 	<mat-sidenav-content>
-		<mat-toolbar style="z-index:-5000;position: absolute;top: 0;">
-			<button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.open()" style="z-index:20000;" *ngIf="(isHandset | async)!.matches">
+		<mat-toolbar style="background-color: transparent; position: absolute;top: 0; width: 64px;">
+			<button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.open()" style="z-index:100;color:white;" *ngIf="(isHandset | async)!.matches">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
 		</mat-toolbar>
