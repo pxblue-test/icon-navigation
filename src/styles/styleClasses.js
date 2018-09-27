@@ -3,46 +3,20 @@
   method that allows for custom style overrides of the default component visuals.
 */
 import React from 'react';
-import {EatonColors} from '@pxblue/themes/react';
 
 const styles = theme => ({
-  flush: {
-    paddingLeft: theme.spacing.unit * .5
-  },
   toolbar:{
-    [theme.breakpoints.down('xs')]:{
-      paddingLeft: 0
-    },
-    paddingLeft: theme.spacing.unit * 2
-  },
-  noPadding: {
-    padding: 0
-  },
-  drawerMargin:{
-    [theme.breakpoints.down('xs')]: {
-      marginLeft: 0,
-    },
-    marginLeft: theme.spacing.unit * 7,
-    transition: 'margin 175ms cubic-bezier(.4, 0, .2, 1)'
-  },
-  drawerMarginFull:{
-    [theme.breakpoints.down('xs')]: {
-      marginLeft: 0,
-    },
-    marginLeft: theme.spacing.unit * 45,
-    transition: 'margin 175ms cubic-bezier(.4, 0, .2, 1)'
-  },
-  drawerWidthFull:{
-    width: theme.spacing.unit * 45,
-    transition: 'width 175ms cubic-bezier(.4, 0, .2, 1)'
-  },
-  drawerWidthCollapsed:{
-    width: theme.spacing.unit * 7,
-    transition: 'width 175ms cubic-bezier(.4, 0, .2, 1)'
+    paddingLeft: 0
   },
   drawer:{
     maxWidth: '85%',
     width: theme.spacing.unit * 45
+  },
+  header:{
+    height: '180px',
+    color: 'white',
+    background: theme.palette.primary['500'],
+    padding: '16px'
   },
   subheader:{
     paddingLeft: '15px',
