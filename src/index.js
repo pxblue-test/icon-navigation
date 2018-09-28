@@ -3,10 +3,10 @@ import { render } from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import {EatonThemes} from '@pxblue/themes/react';
+import * as PXBThemes from '@pxblue/themes/react';
 
 render(
-  <MuiThemeProvider theme={createMuiTheme(EatonThemes.blue)}>
+  <MuiThemeProvider theme={createMuiTheme(PXBThemes.blue)}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
