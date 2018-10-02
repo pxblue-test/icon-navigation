@@ -1,7 +1,6 @@
 // React/Material/PXBlue Basics
-  import { Switch, Route, NavLink } from 'react-router-dom'
+  import { NavLink } from 'react-router-dom'
   import React from 'react';
-  import {EatonColors} from '@pxblue/themes/react';
   import { withStyles } from '@material-ui/core/styles';
 
 // Material-UI Components
@@ -109,31 +108,31 @@ class App extends React.Component {
         </ListSubheader>
       }>
         <Divider />
-        <this.NavigationListItem 
-          title={'Alerts'} 
-          route={'/alerts'}
-          icon={<MoveToInboxIcon />} 
-        />
-        <this.NavigationListItem 
-          title={'Schedule'} 
-          route={'/schedule'}
-          icon={<SendIcon />} 
-        />
-        <this.NavigationListItem 
-          title={'Products'} 
-          route={'/products'}
-          icon={<FolderIcon />} 
-        />
-        <this.NavigationListItem 
-          title={'Event Log'} 
-          route={'/eventlog'}
-          icon={<InfoIcon />} 
-        />
-        <this.NavigationListItem 
-          title={'Settings'} 
-          route={'/settings'}
-          icon={<SettingsIcon />} 
-        />
+        {this.NavigationListItem({
+          title:'Alerts',
+          route:'/alerts',
+          icon:<MoveToInboxIcon/>
+        })}
+        {this.NavigationListItem({
+          title:'Schedule',
+          route:'/schedule',
+          icon:<SendIcon/>
+        })}
+        {this.NavigationListItem({
+          title:'Products',
+          route:'/products',
+          icon:<FolderIcon/>
+        })}
+        {this.NavigationListItem({
+          title:'Event Log',
+          route:'/eventlog',
+          icon:<InfoIcon/>
+        })}
+        {this.NavigationListItem({
+          title:'Settings',
+          route:'/settings',
+          icon:<SettingsIcon/>
+        })}
       </List>
     );
   }
@@ -163,16 +162,16 @@ class App extends React.Component {
           </ListSubheader>
         }>
         <Divider />
-        <this.NavigationListItem 
-          title={'User Guide'} 
-          route={'/userguide'}
-          icon={<FlagIcon />} 
-        />
-        <this.NavigationListItem 
-          title={'License Agreement'} 
-          route={'/license'}
-          icon={<LocalOfferIcon />} 
-        />
+        {this.NavigationListItem({
+          title:'User Guide',
+          route:'/userguide',
+          icon:<FlagIcon/>
+        })}
+        {this.NavigationListItem({
+          title:'License Agreement',
+          route:'/license',
+          icon:<LocalOfferIcon/>
+        })}
       </List>
     );
   }
@@ -191,16 +190,16 @@ class App extends React.Component {
         >User Account</ListSubheader>
       }>
         <Divider />
-        <this.NavigationListItem 
-          title={'User Profile'} 
-          route={'/profile'}
-          icon={<SettingsIcon />} 
-        />
-        <this.NavigationListItem 
-          title={'Log Out'} 
-          route={'/logout'}
-          icon={<SubdirectoryArrowRightIcon />} 
-        />
+        {this.NavigationListItem({
+          title:'User Profile',
+          route:'/profile',
+          icon:<SettingsIcon/>
+        })}
+        {this.NavigationListItem({
+          title:'Log Out',
+          route:'/logout',
+          icon:<SubdirectoryArrowRightIcon/>
+        })}
       </List>
     );
   }
@@ -319,18 +318,18 @@ class App extends React.Component {
     );
   }
 
-  NavigationListItem = ({title, route, icon}) => {
+  NavigationListItem({title, route, icon}){
     const {classes} = this.props;
     const open = (this.state.drawerHover || this.state.drawerOpen);
     const action = () => this.setState({drawerOpen: false, drawerHover: false});
     return (
       <ListItem 
-        className={classes.listItem + (open ? ' open' : '')} 
-        activeClassName={'listItemSelected'}
+        className={classes.listItem + ' ' + (open ? classes.open : '')} 
+        activeClassName={classes.listItemSelected}
         component={NavLink} to={route}
         onClick={() => action()} 
       >
-        <ListItemIcon className="listIcon">
+        <ListItemIcon className={classes.listIcon}>
           {icon}
         </ListItemIcon>
         <ListItemText inset 
