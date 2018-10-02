@@ -32,30 +32,3 @@ body, h1, h2, h3, h4, p {
   justify-content: flex-end;
 }
 
-.listItemSelected{
-  position: relative;
-}
-.listItemSelected:hover{
-  background-color: transparent !important;
-}
-.listItemSelected.open::before{
-  content: '';
-  z-index: -1;
-  position: absolute;
-  height: 100%;
-  width: calc(100% - 8px);
-  left: 0;
-  top: 0;
-  background-color: rgba(0,123,193,.15);
-  border-radius: 0px 24px 24px 0px;
-}
-.listItemSelected.open:hover::before{
-  background-color: rgba(0,123,193,.2);
-}
-.listItemSelected .listItemText {
-  color: #007bc1; /* TODO: find a way to get this from the theme */
-  font-weight: 600;
-}
-.listItemSelected .listIcon {
-  color: #007bc1; /* TODO: find a way to get this from the theme */
-}
