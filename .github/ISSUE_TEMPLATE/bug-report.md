@@ -1,30 +1,21 @@
 ---
-name: Bug Report
-about: " a report to help us improve"
-
+name: Issue Template
+about: "a report to help us improve"
 ---
 
-name: test template
-about: Create a report to help us improve
+#### Bug or feature request?
 
----
+#### What is the expected behavior?
 
-**Describe the bug**
-By hovering over icon navigation opens side nav but pushes content to the right in the angular example.
+#### What is the current behavior?
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to 'https://stackblitz.com/edit/pxblue-icon-navigation-angular'
-2. Click on 'nav icon'
-3. See error
+#### What are the steps to reproduce?
+1.
 
-**Expected behavior**
-By clicking on icon nav should open side navigation bar without pushing content towards the right in angular icon navigation example.
-
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
-
-**Desktop (please complete the following information):**
- - iOS
- - Browser: chrome
- - Version: 69.0
+## Your Environment
+| Environment | Version/Value|
+|---|---|
+| Framework (Angular/React)		|        	 |
+| PX Blue Package(s)			|     		 |
+| Browser						|     		 |
+| Operating System				|     		 |
