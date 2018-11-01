@@ -14,17 +14,17 @@ about: "a report to help us improve"
 
 #### What is your environment?
 <!-- Checked checkbox should look like this: [x] -->
-#Framework
+ Framework
 - [ ] Angular
 - [ ] React
 
-#Browser
+ Browser
 - [ ] Internet Explorer
 - [ ] Safari
 - [ ] Chrome
 - [ ] Firefox
 
-#Operating System
+ Operating System
 - [ ] MacOS
 - [ ] Windows
 - [ ] Other
