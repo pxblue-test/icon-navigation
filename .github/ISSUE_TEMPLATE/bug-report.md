@@ -12,10 +12,19 @@ about: "a report to help us improve"
 #### What are the steps to reproduce?
 1.
 
-## Your Environment
-| Environment | Version/Value|
-|---|---|
-| Framework (Angular/React)		|        	 |
-| PX Blue Package(s)			|     		 |
-| Browser						|     		 |
-| Operating System				|     		 |
+#### What is your environment?
+<!-- Checked checkbox should look like this: [x] -->
+Framework
+- [ ] Angular
+- [ ] React
+Browser
+- [ ] Internet Explorer
+- [ ] Safari
+- [ ] Chrome
+- [ ] Firefox
+Operating System
+- [ ] MacOS
+- [ ] Windows
+- [ ] Other
+		
+#### Anything else to add?
