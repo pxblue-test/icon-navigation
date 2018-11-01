@@ -17,11 +17,13 @@ about: "a report to help us improve"
 Framework
 - [ ] Angular
 - [ ] React
+
 Browser
 - [ ] Internet Explorer
 - [ ] Safari
 - [ ] Chrome
 - [ ] Firefox
+
 Operating System
 - [ ] MacOS
 - [ ] Windows
