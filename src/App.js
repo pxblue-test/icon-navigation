@@ -274,8 +274,15 @@ class App extends React.Component {
               overflowY: 'auto',
               overflowX: 'hidden'
             }} 
-            onMouseEnter={() => this.setState({drawerHover: true})} 
-            onMouseLeave={() => this.setState({drawerHover: false})}
+            onMouseEnter={() => {
+                this.hoverDelay = setTimeout(() => this.setState({drawerHover: true}), 500)
+              }
+            } 
+            onMouseLeave={() => {
+                clearTimeout(this.hoverDelay);
+                this.setState({drawerHover: false})
+              }
+            }
           >
             {this.state.showUserMenu ? this.getUserNavigation() : this.getPrimaryNavigation()}
             <div style={{ flex: '1 1 0px' }} />
