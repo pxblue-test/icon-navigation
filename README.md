@@ -15,7 +15,7 @@ git clone https://github.com/pxblue/icon-navigation -b React
 Navigate to the project directory and install the necessary dependencies (note: our projects are set up to be run with yarn):
 
 ```
-cd side-navigation
+cd icon-navigation
 yarn
 ```
 
