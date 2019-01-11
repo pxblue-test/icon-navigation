@@ -1,10 +1,8 @@
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { AppComponent } from "./app.component";
-import { DemoNavComponent } from "./demo-nav/demo-nav.component";
 import { LayoutModule } from "@angular/cdk/layout";
-import { FormsModule} from "@angular/forms";
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import {
@@ -15,13 +13,14 @@ import {
   MatListModule
 } from "@angular/material";
 
+import { AppComponent } from './app.component';
+import {ComingSoonComponent} from './comingsoon/comingsoon.component';
+
 import { AppRoutingModule } from './app.router';
-import { AlertsComponent } from './alerts/alerts.component';
-import { ProductsComponent } from './products/products.component';
-import { SettingsComponent } from './settings/settings.component';
+import {NavigationService} from './shared/navigation.service';
 
 @NgModule({
-  declarations: [AppComponent, DemoNavComponent, AlertsComponent, ProductsComponent, SettingsComponent],
+  declarations: [AppComponent, ComingSoonComponent],
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -35,7 +34,8 @@ import { SettingsComponent } from './settings/settings.component';
     MatIconModule,
     MatListModule
   ],
-  providers: [],
+  providers: [NavigationService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
