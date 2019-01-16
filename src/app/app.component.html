@@ -1,4 +1,4 @@
-<mat-sidenav-container class="app-container" (notify)="receiveNotification($event)">
+<mat-sidenav-container class="app-container">
 	<mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : (hovering ? 'side' : 'side')" [ngClass]="!mobileQuery.matches ? 'widenav' : 'sidenav'"
 	 [opened]="!mobileQuery.matches ? true : open" [style.width]="mobileQuery.matches ? '350px' : (open || hovering) ? '350px' : '64px'"
 	 (openedChange)="openChanged($event)">

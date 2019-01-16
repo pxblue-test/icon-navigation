@@ -6,7 +6,7 @@ import { ActivatedRoute }    from '@angular/router';
   selector: 'coming-soon',
   template: `
     <mat-toolbar color="primary" class="example-toolbar">
-      <button fxShow.gt-xs="false" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="_navigationService.toggleMenu()" style="margin-left:-4px; margin-right: 12px">
+      <button fxShow.gt-xs="false" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="onMenuClicked()" style="margin-left:-4px; margin-right: 12px">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <h6 class="example-app-name">{{title+': Coming Soon'}}</h6>
@@ -16,6 +16,9 @@ import { ActivatedRoute }    from '@angular/router';
 export class ComingSoonComponent implements OnInit {
   title = '';
   constructor(private _navigationService: NavigationService, private route: ActivatedRoute) { }
+  onMenuClicked(){
+    this._navigationService.toggleMenu();
+  }
   ngOnInit() {
     this.title = this.route.snapshot.data['title']
   }
