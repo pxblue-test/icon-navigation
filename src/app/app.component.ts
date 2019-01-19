@@ -22,18 +22,30 @@ export class AppComponent implements OnDestroy {
     media: MediaMatcher, 
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this._mobileQueryListener = () => {
+      console.log('listening: ' +this.mobileQuery.matches);
+      changeDetectorRef.detectChanges();
+    }
     this.mobileQuery.addListener(this._mobileQueryListener);
      _navigationService.navToggled$.subscribe(
         value => {
+            console.log('toggled: ' + this.open + '->' + !this.open);
             this.open = !this.open;
+            changeDetectorRef.detectChanges();
         });
   }
 
   openChanged(value){
-    if(this.mobileQuery.matches){
-      this.open = value;
-    }
+    // if(this.mobileQuery.matches){
+    //   this.open = value;
+    // }
+  }
+  onMenuClicked(){
+    this._navigationService.toggleMenu();
+  }
+  closeNav(){
+    console.log('closing');
+    this.open = false;
   }
   leave(){
     this.hovering = false;
@@ -46,7 +58,9 @@ export class AppComponent implements OnDestroy {
     this.hasLeft = false;
   }
   toggleDesktop(){
+    console.log('toggleD');
     this.open = !this.open;
+    console.log(this.open);
     if(!this.open){
       this.hovering = false;
     }

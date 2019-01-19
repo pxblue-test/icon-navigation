@@ -1,108 +1,114 @@
-<mat-sidenav-container class="app-container">
-	<mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : (hovering ? 'side' : 'side')" [ngClass]="!mobileQuery.matches ? 'widenav' : 'sidenav'"
-	 [opened]="!mobileQuery.matches ? true : open" [style.width]="mobileQuery.matches ? '350px' : (open || hovering) ? '350px' : '64px'"
-	 (openedChange)="openChanged($event)">
-		<mat-nav-list fxLayout="column" fxFlexFill style="padding-top:0; overflow-x:hidden">
-			<!-- Mobile Toolbar -->
-			<mat-toolbar style="background-color:#007bc1; color:white; min-height:150px;" *ngIf="mobileQuery.matches">
-				<mat-toolbar-row style="height:72px; margin-left: 10px; margin-bottom: 42px;">
-					<mat-icon style="font-size:64px; transform:rotate(42deg);">offline_bolt</mat-icon>
-				</mat-toolbar-row>
-				<mat-toolbar-row style="height:4px;">
-					<small>User Name</small>
-				</mat-toolbar-row>
-				<mat-toolbar-row (click)="logout=!logout" fxLayout="row" style="cursor:pointer;">
-					<small fxFlex>User@email.com</small>
-					<mat-icon *ngIf="!logout">expand_more</mat-icon>
-					<mat-icon *ngIf="logout">expand_less</mat-icon>
-				</mat-toolbar-row>
-			</mat-toolbar>
+<mat-sidenav-container class="app-container" (backdropClick)="open = false">
+	<mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : (hovering ? 'side' : 'side')" class="sidenav"
+	 [opened]="!mobileQuery.matches ? true : open" [class.mobile]="mobileQuery.matches" [class.open]="open || hovering"
+	 (openedChange)="openChanged($event)"
+	 >
+	 <mat-nav-list fxLayout="column" fxFlexFill style="padding-top:0; overflow-x:hidden">
+		<!-- Mobile Toolbar -->
+		<mat-toolbar style="background-color:#007bc1; color:white; min-height:150px;" *ngIf="mobileQuery.matches">
+			<mat-toolbar-row style="height:72px; margin-left: 10px; margin-bottom: 42px;">
+				<mat-icon style="font-size:64px; transform:rotate(42deg);">offline_bolt</mat-icon>
+			</mat-toolbar-row>
+			<mat-toolbar-row style="height:4px;">
+				<small>User Name</small>
+			</mat-toolbar-row>
+			<mat-toolbar-row (click)="logout=!logout" fxLayout="row" style="cursor:pointer;">
+				<small fxFlex>User@email.com</small>
+				<mat-icon *ngIf="!logout">expand_more</mat-icon>
+				<mat-icon *ngIf="logout">expand_less</mat-icon>
+			</mat-toolbar-row>
+		</mat-toolbar>
 
-			<!-- Desktop Toolbar -->
-			<mat-toolbar style="background-color:white" *ngIf="!mobileQuery.matches">
-				<button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="toggleDesktop()" style="margin-left:-4px; margin-right: 12px">
-          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-        </button>
-        <h1>Product Name / Logo</h1>
-      </mat-toolbar>
-      <mat-divider></mat-divider>
-        <div class="navWrapper">
-			<section *ngIf="!logout" fxLayout="column" (mouseover)="enter()" (mouseleave)="leave()">
-        <h3 matSubheader style="margin-top: 0">{{open || hovering ? 'Monitor' : ''}}</h3>
-        <mat-divider></mat-divider>
-        <a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/alert">
-					<mat-icon matListIcon class="nav-icon">move_to_inbox</mat-icon>
-					Alerts
-				</a>
-				<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/schedule">
-					<mat-icon matListIcon class="nav-icon">send</mat-icon>
-					Schedule
-				</a>
-				<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/products">
-					<mat-icon matListIcon class="nav-icon">folder</mat-icon>
-					Products
-				</a>
-				<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/events">
-					<mat-icon matListIcon class="nav-icon">info</mat-icon>
-					Event Log
-				</a>
-				<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/settings">
-					<mat-icon matListIcon class="nav-icon">settings</mat-icon>
-					Settings
-				</a>
-			</section>
-
-			<section *ngIf="logout" (mouseover)="enter()" (mouseleave)="leave()">
-				<h3 matSubheader style="margin-top: 0">{{open || hovering ? 'User Account' : ''}}</h3>
-				<mat-divider></mat-divider>
-				<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/profile">
-					<mat-icon matListIcon class="nav-icon">settings</mat-icon>
-					User Profile
-				</a>
-				<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/logout">
-					<mat-icon matListIcon class="nav-icon">subdirectory_arrow_right</mat-icon>
-					Log Out
-				</a>
-			</section>
-      <mat-divider></mat-divider>
-
-			<div fxFlex (mouseover)="enter()" (mouseleave)="leave()"></div>
+		<!-- Desktop Toolbar -->
+		<mat-toolbar style="background-color:white" *ngIf="!mobileQuery.matches">
+			<button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="onMenuClicked()" style="margin-left:-4px; margin-right: 12px">
+				<mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+			</button>
+			<h1>Product Name / Logo</h1>
+		</mat-toolbar>
+		<mat-divider></mat-divider>
+			<div class="navWrapper">
+		<section *ngIf="!logout" fxLayout="column" (mouseover)="enter()" (mouseleave)="leave()">
+			<h3 matSubheader style="margin-top: 0">{{open || hovering ? 'Monitor' : ''}}</h3>
 			<mat-divider></mat-divider>
+			<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/alert">
+				<mat-icon matListIcon class="nav-icon">move_to_inbox</mat-icon>
+				Alerts
+			</a>
+			<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/schedule">
+				<mat-icon matListIcon class="nav-icon">send</mat-icon>
+				Schedule
+			</a>
+			<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/products">
+				<mat-icon matListIcon class="nav-icon">folder</mat-icon>
+				Products
+			</a>
+			<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/events">
+				<mat-icon matListIcon class="nav-icon">info</mat-icon>
+				Event Log
+			</a>
+			<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/settings">
+				<mat-icon matListIcon class="nav-icon">settings</mat-icon>
+				Settings
+			</a>
+		</section>
 
-      <section (mouseover)="hovering=true" (mouseleave)="hovering=false">
-				<h3 matSubheader style="margin-top: 0">{{open || hovering ? 'About' : ''}}</h3>
-        <mat-divider></mat-divider>
-        <a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/guide">
-					<mat-icon matListIcon class="nav-icon">flag</mat-icon>
-					User Guide
-				</a>
-				<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/license">
-					<mat-icon matListIcon class="nav-icon">local_offer</mat-icon>
-					License Agreement
-				</a>
-			</section>
-      
-      <section *ngIf="!mobileQuery.matches" (mouseover)="enter()" (mouseleave)="leave()">
-				<mat-divider></mat-divider>
-        <h3 matSubheader style="margin-top: 0">{{open || hovering ? 'User Account' : ''}}</h3>
-				<mat-divider></mat-divider>
-				<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/profile">
-					<mat-icon matListIcon class="nav-icon">settings</mat-icon>
-					User Profile
-				</a>
-				<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/logout">
-					<mat-icon matListIcon class="nav-icon">subdirectory_arrow_right</mat-icon>
-					Log Out
-				</a>
-			</section>
-      
-			
+		<section *ngIf="logout" (mouseover)="enter()" (mouseleave)="leave()">
+			<h3 matSubheader style="margin-top: 0">{{open || hovering ? 'User Account' : ''}}</h3>
+			<mat-divider></mat-divider>
+			<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/profile">
+				<mat-icon matListIcon class="nav-icon">settings</mat-icon>
+				User Profile
+			</a>
+			<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/logout">
+				<mat-icon matListIcon class="nav-icon">subdirectory_arrow_right</mat-icon>
+				Log Out
+			</a>
+		</section>
+		<mat-divider></mat-divider>
+
+		<div fxFlex (mouseover)="enter()" (mouseleave)="leave()"></div>
+		<mat-divider></mat-divider>
+
+		<section (mouseover)="hovering=true" (mouseleave)="hovering=false">
+			<h3 matSubheader style="margin-top: 0">{{open || hovering ? 'About' : ''}}</h3>
+			<mat-divider></mat-divider>
+			<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/guide">
+				<mat-icon matListIcon class="nav-icon">flag</mat-icon>
+				User Guide
+			</a>
+			<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/license">
+				<mat-icon matListIcon class="nav-icon">local_offer</mat-icon>
+				License Agreement
+			</a>
+		</section>
+		
+		<section *ngIf="!mobileQuery.matches" (mouseover)="enter()" (mouseleave)="leave()">
+			<mat-divider></mat-divider>
+			<h3 matSubheader style="margin-top: 0">{{open || hovering ? 'User Account' : ''}}</h3>
+			<mat-divider></mat-divider>
+			<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/profile">
+				<mat-icon matListIcon class="nav-icon">settings</mat-icon>
+				User Profile
+			</a>
+			<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/logout">
+				<mat-icon matListIcon class="nav-icon">subdirectory_arrow_right</mat-icon>
+				Log Out
+			</a>
+		</section>
+		
+		
 </div>
-    </mat-nav-list>
+	</mat-nav-list>
 	</mat-sidenav>
 
-	<mat-sidenav-content [style.marginLeft]="mobileQuery.matches ? 'auto' : ((open) ? '350px' : '64px')" class="nav-content">
-    <router-outlet></router-outlet>
+	<mat-sidenav-content class="nav-content" [class.mobile]="mobileQuery.matches" [class.open]="open">
+		<router-outlet></router-outlet>
+		<div style="margin-left: 400px">
+		{{'Open:' + open}}
+		{{'Hover: ' + hovering}}
+		{{'Mobile: ' + mobileQuery.matches}}
+		{{mobileQuery.matches ? 'auto' : ((open) ? '350px' : '64px')}}</div>
   </mat-sidenav-content>
 
 </mat-sidenav-container>
