@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom'
+ import { Switch, Route } from 'react-router-dom'
 
 // Different App Pages/Routes
 import Alerts from '../pages/alerts';
