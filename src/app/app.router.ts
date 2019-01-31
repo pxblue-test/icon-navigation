@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ComingSoonComponent } from './comingsoon/comingsoon.component'
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     redirectTo: '/products',
