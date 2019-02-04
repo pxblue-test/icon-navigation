@@ -7,9 +7,8 @@ jobs:
     steps:
       - checkout
       - run: 
-          Name: Install dependencies
+          name: Install dependencies
           command: yarn 
       - run:
-          Name: Test React 
-          command: |
-            yarn run test
+          name: Test React 
+          command: yarn test
