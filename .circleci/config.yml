@@ -6,7 +6,10 @@ jobs:
       - image: circleci/node:8
     steps:
       - checkout
-      - run: yarn 
+      - run: 
+          Name: Install dependencies
+          command: yarn 
       - run:
+          Name: Test React 
           command: |
             yarn run test
