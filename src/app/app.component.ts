@@ -1,7 +1,6 @@
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
 import {NavigationService} from './shared/navigation.service';
-//import { Observable } from 'rxjs';
 
 @Component({
   selector: 'my-app',
@@ -11,10 +10,11 @@ import {NavigationService} from './shared/navigation.service';
 export class AppComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
-  hovering = false;
-  hasLeft = true;
-  open = false;
-  logout = false;
+  hovering = false; // is the navigation menu hovered over
+  hasLeft = true; // used for handling hover behavior on nav menu
+  open = false; // is the nav menu open
+  userMenu = false; // toggles menu mode on mobile
+  goingMobile = false; // we use this to prevent the flash of mobile sidenav when making the window smaller
 
   constructor(
     private _navigationService: NavigationService,
@@ -22,18 +22,21 @@ export class AppComponent implements OnDestroy {
     media: MediaMatcher, 
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this._mobileQueryListener = () => {
+      if(this.mobileQuery.matches){ this.goingMobile = true; }
+      changeDetectorRef.detectChanges();
+    }
     this.mobileQuery.addListener(this._mobileQueryListener);
-     _navigationService.navToggled$.subscribe(
+      _navigationService.navToggled$.subscribe(
         value => {
-            this.open = !this.open;
-        });
+          this.open = !this.open;
+          changeDetectorRef.detectChanges();
+        }
+      );
   }
 
-  openChanged(value){
-    if(this.mobileQuery.matches){
-      this.open = value;
-    }
+  toggleDesktopMenu(){
+    this._navigationService.toggleMenu();
   }
   leave(){
     this.hovering = false;
@@ -44,12 +47,6 @@ export class AppComponent implements OnDestroy {
       this.hovering = true;
     }
     this.hasLeft = false;
-  }
-  toggleDesktop(){
-    this.open = !this.open;
-    if(!this.open){
-      this.hovering = false;
-    }
   }
 
   ngOnDestroy(): void {
