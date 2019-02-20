@@ -31,23 +31,23 @@
 				<section *ngIf="!userMenu" fxLayout="column" (mouseover)="enter()" (mouseleave)="leave()">
 					<h3 matSubheader style="margin-top: 0">{{open || hovering ? 'Monitor' : ''}}</h3>
 					<mat-divider></mat-divider>
-					<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/alert">
+					<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/alert" (click)="closeNav()">
 						<mat-icon matListIcon class="nav-icon">move_to_inbox</mat-icon>
 						Alerts
 					</a>
-					<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/schedule">
+					<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/schedule" (click)="closeNav()">
 						<mat-icon matListIcon class="nav-icon">send</mat-icon>
 						Schedule
 					</a>
-					<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/products">
+					<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/products" (click)="closeNav()">
 						<mat-icon matListIcon class="nav-icon">folder</mat-icon>
 						Products
 					</a>
-					<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/events">
+					<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/events" (click)="closeNav()">
 						<mat-icon matListIcon class="nav-icon">info</mat-icon>
 						Event Log
 					</a>
-					<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/settings">
+					<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/settings" (click)="closeNav()">
 						<mat-icon matListIcon class="nav-icon">settings</mat-icon>
 						Settings
 					</a>
@@ -55,11 +55,11 @@
 				<section *ngIf="userMenu" (mouseover)="enter()" (mouseleave)="leave()">
 					<h3 matSubheader style="margin-top: 0">{{open || hovering ? 'User Account' : ''}}</h3>
 					<mat-divider></mat-divider>
-					<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/profile">
+					<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/profile" (click)="closeNav()">
 						<mat-icon matListIcon class="nav-icon">settings</mat-icon>
 						User Profile
 					</a>
-					<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/logout">
+					<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/logout" (click)="closeNav()">
 						<mat-icon matListIcon class="nav-icon">subdirectory_arrow_right</mat-icon>
 						Log Out
 					</a>
@@ -71,11 +71,11 @@
 				<section (mouseover)="hovering=true" (mouseleave)="hovering=false">
 					<h3 matSubheader style="margin-top: 0">{{open || hovering ? 'About' : ''}}</h3>
 					<mat-divider></mat-divider>
-					<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/guide">
+					<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/guide" (click)="closeNav()">
 						<mat-icon matListIcon class="nav-icon">flag</mat-icon>
 						User Guide
 					</a>
-					<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/license">
+					<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/license" (click)="closeNav()">
 						<mat-icon matListIcon class="nav-icon">local_offer</mat-icon>
 						License Agreement
 					</a>
@@ -85,11 +85,11 @@
 					<mat-divider></mat-divider>
 					<h3 matSubheader style="margin-top: 0">{{open || hovering ? 'User Account' : ''}}</h3>
 					<mat-divider></mat-divider>
-					<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/profile">
+					<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/profile" (click)="closeNav()">
 						<mat-icon matListIcon class="nav-icon">settings</mat-icon>
 						User Profile
 					</a>
-					<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/logout">
+					<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/logout" (click)="closeNav()">
 						<mat-icon matListIcon class="nav-icon">subdirectory_arrow_right</mat-icon>
 						Log Out
 					</a>
