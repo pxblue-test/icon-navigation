@@ -48,6 +48,11 @@ export class AppComponent implements OnDestroy {
     }
     this.hasLeft = false;
   }
+  closeNav(){
+    if(this.mobileQuery.matches){this.open = false;}
+    this.hovering = false;
+    this.hasLeft = false;
+  }
 
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
