@@ -1,5 +1,6 @@
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
+
 import {NavigationService} from './shared/navigation.service';
 
 @Component({
@@ -19,20 +20,22 @@ export class AppComponent implements OnDestroy {
   constructor(
     private _navigationService: NavigationService,
     changeDetectorRef: ChangeDetectorRef, 
-    media: MediaMatcher, 
+    media: MediaMatcher
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => {
-      if(this.mobileQuery.matches){ this.goingMobile = true; }
-      changeDetectorRef.detectChanges();
+      if(this.mobileQuery.matches){ 
+        this.goingMobile = true; 
+      }
     }
     this.mobileQuery.addListener(this._mobileQueryListener);
-      _navigationService.navToggled$.subscribe(
-        value => {
-          this.open = !this.open;
-          changeDetectorRef.detectChanges();
-        }
-      );
+
+    _navigationService.navToggled$.subscribe(
+      value => {
+        this.open = !this.open;
+        changeDetectorRef.detectChanges();
+      }
+    );
   }
 
   toggleDesktopMenu(){
