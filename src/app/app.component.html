@@ -28,7 +28,7 @@
 			</mat-toolbar>
 			<mat-divider></mat-divider>
 			<div class="navWrapper">
-				<section *ngIf="!userMenu" fxLayout="column" (mouseover)="enter()" (mouseleave)="leave()">
+				<section *ngIf="(mobileQuery.matches && !userMenu) || !mobileQuery.matches" fxLayout="column" (mouseover)="enter()" (mouseleave)="leave()">
 					<h3 matSubheader style="margin-top: 0">{{open || hovering ? 'Monitor' : ''}}</h3>
 					<mat-divider></mat-divider>
 					<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/alert" (click)="closeNav()">
@@ -52,7 +52,7 @@
 						Settings
 					</a>
 				</section>
-				<section *ngIf="userMenu" (mouseover)="enter()" (mouseleave)="leave()">
+				<section *ngIf="mobileQuery.matches && userMenu" (mouseover)="enter()" (mouseleave)="leave()">
 					<h3 matSubheader style="margin-top: 0">{{open || hovering ? 'User Account' : ''}}</h3>
 					<mat-divider></mat-divider>
 					<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/profile" (click)="closeNav()">
@@ -68,7 +68,7 @@
 				<div fxFlex (mouseover)="enter()" (mouseleave)="leave()"></div>
 				<mat-divider></mat-divider>
 
-				<section (mouseover)="hovering=true" (mouseleave)="hovering=false">
+				<section (mouseover)="enter()" (mouseleave)="leave()">
 					<h3 matSubheader style="margin-top: 0">{{open || hovering ? 'About' : ''}}</h3>
 					<mat-divider></mat-divider>
 					<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/guide" (click)="closeNav()">
