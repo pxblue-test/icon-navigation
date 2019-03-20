@@ -27,5 +27,12 @@
   "devDependencies": {
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.8.0"
-  }
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "Firefox ESR",
+    "IE 11",
+    "Edge 16",
+    "Safari 11"
+  ]
 }
