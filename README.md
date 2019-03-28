@@ -8,8 +8,8 @@ This is a sample application showing how to build a full-featured, responsive na
 To run this example, first clone the repository. Each of our example projects comes with a branch for Angular and a branch for React. You can choose which branch to use when you clone the repository (or you can switch after cloning as well):
 
 ```
-git clone https://github.com/pxblue/icon-navigation -b Angular
-git clone https://github.com/pxblue/icon-navigation -b React
+git clone https://github.com/pxblue/icon-navigation -b angular
+git clone https://github.com/pxblue/icon-navigation -b react
 ```
 
 Navigate to the project directory and install the necessary dependencies (note: our projects are set up to be run with yarn):
