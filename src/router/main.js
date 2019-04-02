@@ -17,7 +17,7 @@ import Home from '../pages/home';
 The main page body, which contains the route definitions
 */
 const Main = ({style}) => (
-  <main style={{padding: '16px'}}>
+  <div style={{padding: '16px'}}>
     <Switch>
       <Route exact path='/alerts' component={Alerts}/>
       <Route exact path='/schedule' component={Schedule}/>
@@ -31,6 +31,6 @@ const Main = ({style}) => (
       <Route exact path='/logout' component={Logout}/>
       <Route path='*' component={Home}/>
     </Switch>
-  </main>
+  </div>
 );
 export default Main;
