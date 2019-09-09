@@ -19,6 +19,7 @@
     "rxjs": "^6.3.3",
     "sass": "^1.16.1",
     "tslib": "^1.9.0",
+    "typeface-open-sans": "^0.0.75",
     "zone.js": "~0.9.1"
   },
   "scripts": {
