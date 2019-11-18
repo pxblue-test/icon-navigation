@@ -1,6 +1,6 @@
 // React/Material/PXBlue Basics
   import { NavLink } from 'react-router-dom'
-  import React from 'react';
+  import React, {CSSProperties} from 'react';
   import { withStyles } from '@material-ui/core/styles';
 
 // Material-UI Components
@@ -37,17 +37,37 @@
   import styles from './styles/styleClasses';
   import Circle from './utilities/circle';
 
+
+type AppProps = {
+    classes: any;
+};
+
+type NavProps = {
+    title: string;
+    route: string;
+    icon: JSX.Element;
+};
+
+type AppState = {
+    showUserMenu: boolean;
+    drawerOpen: boolean;
+    drawerHover: boolean;
+};
+
 /*
 The container for the entire app, including the common side-navigation panel and the main body panel.
 */
-class App extends React.Component {
-  constructor(props) {
+class App extends React.Component<AppProps, AppState> {
+
+    hoverDelay = 0;
+
+  constructor(props: AppProps) {
     super(props);
     this.state = {
       showUserMenu: false,
       drawerOpen: false,
       drawerHover: false
-    }
+    };
   }
 
   toggleDrawer() {
@@ -79,7 +99,7 @@ class App extends React.Component {
               <Typography variant="h6" color="inherit">Selected Page Name</Typography>
             </Toolbar>
           </AppBar>
-          
+
           <Main />
         </div>
       </div>
@@ -88,7 +108,7 @@ class App extends React.Component {
 
   /*
     The functions below have been used to abstract various pieces of the navigation
-    menu. This allows them to be shared between the mobile size navigation and the 
+    menu. This allows them to be shared between the mobile size navigation and the
     desktop size.
   */
 
@@ -97,10 +117,10 @@ class App extends React.Component {
     const { classes } = this.props;
     return(
       <List subheader={
-        <ListSubheader 
+        <ListSubheader
           className={classes.subheader}
           style={{
-            position: 'unset', 
+            position: 'unset',
             color: (this.state.drawerOpen || this.state.drawerHover ? '' : 'transparent')
           }}
         >
@@ -141,9 +161,9 @@ class App extends React.Component {
   getSecondaryNavigation(){
     const {classes} = this.props;
     return (
-      <List style={{flex: '0 0 auto' }} 
+      <List style={{flex: '0 0 auto' }}
         subheader={
-          <ListSubheader 
+          <ListSubheader
             className={classes.subheader}
             style={{
               display: 'flex',
@@ -152,8 +172,8 @@ class App extends React.Component {
               color: (this.state.drawerOpen || this.state.drawerHover ? '' : 'transparent')
             }}
           ><span style={{flex: '0 0 auto'}}>About</span>
-            <span 
-              style={{ 
+            <span
+              style={{
                 flex: '1 1 0px',
                 textAlign: 'right',
                 whiteSpace: 'nowrap'
@@ -181,10 +201,10 @@ class App extends React.Component {
     const {classes} = this.props;
     return (
       <List subheader={
-        <ListSubheader 
+        <ListSubheader
           className={classes.subheader}
           style={{
-            position: 'unset', 
+            position: 'unset',
             color: (this.state.drawerOpen || this.state.drawerHover ? '' : 'transparent')
           }}
         >User Account</ListSubheader>
@@ -210,26 +230,26 @@ class App extends React.Component {
     return (
       <div className={"flexVertBottom " + classes.header}>
         <Circle/>
-        <div 
-          style={{ 
-            cursor: "pointer", 
-            width: '100%' 
-          }} 
+        <div
+          style={{
+            cursor: "pointer",
+            width: '100%'
+          }}
           onClick={() => this.toggleNavMenu()}
         >
-          <Typography 
-            variant="subtitle1" 
-            color="inherit" 
+          <Typography
+            variant="subtitle1"
+            color="inherit"
             style={{lineHeight:'1rem'}}
           >User Name</Typography>
           <div className={'flexHor'}>
-            <Typography 
-              variant="subtitle1" 
-              color="inherit" 
+            <Typography
+              variant="subtitle1"
+              color="inherit"
               style={{lineHeight:'1rem'}}
             >username@domain.com</Typography>
             <div style={{flex: '1 1 0px'}}/>
-            <ExpandMoreIcon style={this.state.showUserMenu ? {transform: 'rotate(180deg)'} : null}/>
+            <ExpandMoreIcon style={this.state.showUserMenu ? ({transform: 'rotate(180deg)'}) : undefined}/>
           </div>
         </div>
       </div>
@@ -240,44 +260,45 @@ class App extends React.Component {
   getDesktopNavigationMenu(){
     const { classes } = this.props;
     return (
-      <Drawer 
-        variant="permanent" 
-        open={true} 
+      <Drawer
+        variant="permanent"
+        open={true}
         onClose={() => this.toggleDrawer()}
       >
-        <div 
-          className={"flexVert " + (this.state.drawerHover ? classes.drawerWidthFull : 
-              (this.state.drawerOpen ? 
-                classes.drawerWidthFull : 
+        <div
+          className={"flexVert " + (this.state.drawerHover ? classes.drawerWidthFull :
+              (this.state.drawerOpen ?
+                classes.drawerWidthFull :
                 classes.drawerWidthCollapsed
               ))
-          } 
-          style={{ 
+          }
+          style={{
             height: '100%',
             overflowX: 'hidden'
           }}
-        > 
+        >
           <Toolbar className={classes.flush + ' ' + classes.drawerWidthFull}>
-            <IconButton 
-              color="inherit" 
+            <IconButton
+              color="inherit"
               onClick={() => this.toggleDrawer()}
             ><MenuIcon/></IconButton>
-            {(this.state.drawerOpen || this.state.drawerHover) && 
+            {(this.state.drawerOpen || this.state.drawerHover) &&
               <Typography variant="h6" color="inherit">Product Name / Logo</Typography>
             }
           </Toolbar>
           <Divider />
-          <div 
-            className={classes.drawerWidthFull} 
+          <div
+            className={classes.drawerWidthFull}
             style={{
-              flex: '1 1 0px', 
+              flex: '1 1 0px',
               overflowY: 'auto',
               overflowX: 'hidden'
-            }} 
+            }}
             onMouseEnter={() => {
-                this.hoverDelay = setTimeout(() => this.setState({drawerHover: true}), 500)
+                //this.props =
+                setTimeout(() => this.setState({drawerHover: true}), 500)
               }
-            } 
+            }
             onMouseLeave={() => {
                 clearTimeout(this.hoverDelay);
                 this.setState({drawerHover: false})
@@ -300,19 +321,19 @@ class App extends React.Component {
   getMobileNavigationMenu(){
     const { classes } = this.props;
     return (
-      <Drawer 
-        open={this.state.drawerOpen} 
+      <Drawer
+        open={this.state.drawerOpen}
         onClose={() => this.toggleDrawer()}
         classes={{paper: classes.drawer}}
       >
-        <div 
-          className={"flexVert"} 
-          style={{ 
-            height: '100%', 
+        <div
+          className={"flexVert"}
+          style={{
+            height: '100%',
             width: '100%' ,
             overflowX: 'hidden'
           }}
-        > 
+        >
           {this.getUserDetails()}
           <div style={{flex: '1 1 0px', overflowY: 'auto', overflowX: 'hidden'}}>
             {this.state.showUserMenu ? this.getUserNavigation() : this.getPrimaryNavigation()}
@@ -325,23 +346,24 @@ class App extends React.Component {
     );
   }
 
-  NavigationListItem({title, route, icon}){
+  NavigationListItem(navProps: NavProps){
     const {classes} = this.props;
     const open = (this.state.drawerHover || this.state.drawerOpen);
     const action = () => this.setState({drawerOpen: false, drawerHover: false});
-    return (
-      <ListItem 
-        className={classes.listItem + ' ' + (open ? classes.open : '')} 
+      return (
+      <ListItem
+        className={classes.listItem + ' ' + (open ? classes.open : '')}
         activeClassName={classes.listItemSelected}
-        component={NavLink} to={route}
-        onClick={() => action()} 
+        //@ts-ignore
+        component={NavLink} to={navProps.route}
+        onClick={() => action()}
       >
         <ListItemIcon className={classes.listIcon}>
-          {icon}
+          {navProps.icon}
         </ListItemIcon>
-        <ListItemText inset 
+        <ListItemText inset
           className={classes.listItemText}
-          primary={title}
+          primary={navProps.title}
         />
       </ListItem>
     );

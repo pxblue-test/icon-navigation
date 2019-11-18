@@ -16,7 +16,7 @@ import Home from '../pages/home';
 /*
 The main page body, which contains the route definitions
 */
-const Main = ({style}) => (
+const Main = () => (
   <div style={{padding: '16px'}}>
     <Switch>
       <Route exact path='/alerts' component={Alerts}/>

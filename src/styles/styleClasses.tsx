@@ -1,9 +1,9 @@
 /*
-  This file contains class definitions for use with Material UI's 'withStyles' 
+  This file contains class definitions for use with Material UI's 'withStyles'
   method that allows for custom style overrides of the default component visuals.
 */
 
-const styles = theme => ({
+const styles: any = (theme: any) => ({
   flush: {
     paddingLeft: theme.spacing.unit * .5
   },
