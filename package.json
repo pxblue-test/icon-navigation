@@ -14,7 +14,10 @@
     "react-router-dom": "4.3.1",
     "react-scripts": "^3.0.0"
   },
-    "prettier": "@pxblue/prettier-config",
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+  "prettier": "@pxblue/prettier-config",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -22,9 +25,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+      "lint": "eslint \"src/**/**.{ts,tsx}\" --cache",
+      "lint:fix": "eslint \"src/**/**.{ts,tsx}\" --fix",
     "prettier": "prettier \"src/**/**.{ts,tsx,js,jsx,json,css,scss,html}\" --write"
   },
   "devDependencies": {
+    "@pxblue/eslint-config": "^1.1.1",
     "@pxblue/prettier-config": "^1.0.1",
     "@types/enzyme": "^3.10.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
@@ -32,9 +38,14 @@
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.4",
     "@types/react-router-dom": "^5.1.2",
+    "@typescript-eslint/eslint-plugin": "^2.8.0",
+    "@typescript-eslint/parser": "^2.8.0",
     "awesome-typescript-loader": "^5.2.1",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.8.0",
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.6.0",
+    "eslint-plugin-react": "^7.16.0",
     "prettier": "^1.19.1",
     "source-map-loader": "^0.2.4",
     "typescript": "^3.7.2"

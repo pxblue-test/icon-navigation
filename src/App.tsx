@@ -86,7 +86,12 @@ class App extends React.Component<AppProps, AppState> {
                     <AppBar position="static" color="primary">
                         <Toolbar className={classes.toolbar}>
                             <Hidden smUp>
-                                <IconButton color="inherit" onClick={() => this.toggleDrawer()}>
+                                <IconButton
+                                    color="inherit"
+                                    onClick={() => {
+                                        return this.toggleDrawer();
+                                    }}
+                                >
                                     <MenuIcon />
                                 </IconButton>
                             </Hidden>
@@ -235,14 +240,16 @@ class App extends React.Component<AppProps, AppState> {
     getUserDetails() {
         const { classes } = this.props;
         return (
-            <div className={'flexVertBottom ' + classes.header}>
+            <div className={`flexVertBottom ${classes.header}`}>
                 <Circle />
                 <div
                     style={{
                         cursor: 'pointer',
                         width: '100%',
                     }}
-                    onClick={() => this.toggleNavMenu()}
+                    onClick={() => {
+                        return this.toggleNavMenu();
+                    }}
                 >
                     <Typography variant="subtitle1" color="inherit" style={{ lineHeight: '1rem' }}>
                         User Name
@@ -263,23 +270,33 @@ class App extends React.Component<AppProps, AppState> {
     getDesktopNavigationMenu() {
         const { classes } = this.props;
         return (
-            <Drawer variant="permanent" open={true} onClose={() => this.toggleDrawer()}>
+            <Drawer
+                variant="permanent"
+                open={true}
+                onClose={() => {
+                    return this.toggleDrawer();
+                }}
+            >
                 <div
-                    className={
-                        'flexVert ' +
-                        (this.state.drawerHover
+                    className={`flexVert ${
+                        this.state.drawerHover
                             ? classes.drawerWidthFull
                             : this.state.drawerOpen
                             ? classes.drawerWidthFull
-                            : classes.drawerWidthCollapsed)
-                    }
+                            : classes.drawerWidthCollapsed
+                    }`}
                     style={{
                         height: '100%',
                         overflowX: 'hidden',
                     }}
                 >
-                    <Toolbar className={classes.flush + ' ' + classes.drawerWidthFull}>
-                        <IconButton color="inherit" onClick={() => this.toggleDrawer()}>
+                    <Toolbar className={`${classes.flush} ${classes.drawerWidthFull}`}>
+                        <IconButton
+                            color="inherit"
+                            onClick={() => {
+                                return this.toggleDrawer();
+                            }}
+                        >
                             <MenuIcon />
                         </IconButton>
                         {(this.state.drawerOpen || this.state.drawerHover) && (
@@ -298,7 +315,9 @@ class App extends React.Component<AppProps, AppState> {
                         }}
                         onMouseEnter={() => {
                             //this.props =
-                            setTimeout(() => this.setState({ drawerHover: true }), 500);
+                            setTimeout(() => {
+                                return this.setState({ drawerHover: true });
+                            }, 500);
                         }}
                         onMouseLeave={() => {
                             clearTimeout(this.hoverDelay);
@@ -323,7 +342,9 @@ class App extends React.Component<AppProps, AppState> {
         return (
             <Drawer
                 open={this.state.drawerOpen}
-                onClose={() => this.toggleDrawer()}
+                onClose={() => {
+                    return this.toggleDrawer();
+                }}
                 classes={{ paper: classes.drawer }}
             >
                 <div
@@ -349,15 +370,19 @@ class App extends React.Component<AppProps, AppState> {
     NavigationListItem(navProps: NavProps) {
         const { classes } = this.props;
         const open = this.state.drawerHover || this.state.drawerOpen;
-        const action = () => this.setState({ drawerOpen: false, drawerHover: false });
+        const action = () => {
+            return this.setState({ drawerOpen: false, drawerHover: false });
+        };
         return (
             <ListItem
-                className={classes.listItem + ' ' + (open ? classes.open : '')}
+                className={`${classes.listItem} ${open ? classes.open : ''}`}
                 activeClassName={classes.listItemSelected}
                 //@ts-ignore
                 component={NavLink}
                 to={navProps.route}
-                onClick={() => action()}
+                onClick={() => {
+                    return action();
+                }}
             >
                 <ListItemIcon className={classes.listIcon}>{navProps.icon}</ListItemIcon>
                 <ListItemText inset className={classes.listItemText} primary={navProps.title} />
