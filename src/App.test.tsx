@@ -3,17 +3,13 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter, MemoryRouter} from 'react-router-dom';
 
 import App from './App';
-import Alerts from './pages/alerts';
-import Schedule from './pages/schedule';
 import Logout from './pages/logout';
 import Products from './pages/products';
 import EventLog from './pages/events';
 import Settings from './pages/settings';
 import Home from './pages/home';
 
-import Drawer from '@material-ui/core/Drawer';
-
-import Enzyme, {shallow, mount} from 'enzyme';
+import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 Enzyme.configure({adapter: new Adapter()});
@@ -49,7 +45,7 @@ it('renders correct route', () => {
         </MemoryRouter>
       );
       expect(wrapper.find(Logout)).toHaveLength(1);
-      
+
       wrapper = mount(
         <MemoryRouter initialEntries={[ '/settings' ]}>
           <App/>
