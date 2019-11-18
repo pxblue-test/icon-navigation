@@ -8,7 +8,7 @@ import Logout from '../pages/logout';
 import Products from '../pages/products';
 import EventLog from '../pages/events';
 import Settings from '../pages/settings';
-import Userguide from '../pages/userguide';
+import UserGuide from '../pages/user-guide';
 import License from '../pages/license';
 import Profile from '../pages/profile';
 import Home from '../pages/home';
@@ -16,7 +16,7 @@ import Home from '../pages/home';
 /*
 The main page body, which contains the route definitions
 */
-const Main = () => {
+const Main = (): JSX.Element => {
     return (
         <div style={{ padding: '16px' }}>
             <Switch>
@@ -26,7 +26,7 @@ const Main = () => {
                 <Route exact path="/products" component={Products} />
                 <Route exact path="/eventlog" component={EventLog} />
                 <Route exact path="/settings" component={Settings} />
-                <Route exact path="/userguide" component={Userguide} />
+                <Route exact path="/userguide" component={UserGuide} />
                 <Route exact path="/license" component={License} />
                 <Route exact path="/profile" component={Profile} />
                 <Route exact path="/logout" component={Logout} />

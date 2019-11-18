@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Logout = () => {
+const Logout = (): JSX.Element => {
     return (
         <div id="LOGOUT">
-            <h1>You've successfully logged out!</h1>
+            <h1>{`You've successfully logged out!`}</h1>
         </div>
     );
 };

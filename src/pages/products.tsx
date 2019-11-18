@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Products = () => {
+const Products = (): JSX.Element => {
     return (
         <div id="PRODUCTS">
             <h1>Welcome to the Products page!</h1>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Circle = () => {
+const Circle = (): JSX.Element => {
     return (
         <div
             style={{
@@ -12,7 +12,7 @@ const Circle = () => {
                 width: 64,
                 height: 64,
             }}
-        ></div>
+        />
     );
 };
 export default Circle;

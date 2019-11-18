@@ -1,6 +1,6 @@
 // React/Material/PXBlue Basics
 import { NavLink } from 'react-router-dom';
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 
 // Material-UI Components
@@ -38,6 +38,7 @@ import styles from './styles/styleClasses';
 import Circle from './utilities/circle';
 
 type AppProps = {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     classes: any;
 };
 
@@ -68,15 +69,15 @@ class App extends React.Component<AppProps, AppState> {
         };
     }
 
-    toggleDrawer() {
+    toggleDrawer(): void {
         this.setState({ drawerOpen: !this.state.drawerOpen });
     }
 
-    toggleNavMenu() {
+    toggleNavMenu(): void {
         this.setState({ showUserMenu: !this.state.showUserMenu });
     }
 
-    render() {
+    render(): JSX.Element {
         const { classes } = this.props;
         return (
             <div>
@@ -88,7 +89,7 @@ class App extends React.Component<AppProps, AppState> {
                             <Hidden smUp>
                                 <IconButton
                                     color="inherit"
-                                    onClick={() => {
+                                    onClick={(): void => {
                                         return this.toggleDrawer();
                                     }}
                                 >
@@ -114,7 +115,7 @@ class App extends React.Component<AppProps, AppState> {
   */
 
     // returns the layout for the panel of main application pages
-    getPrimaryNavigation() {
+    getPrimaryNavigation(): JSX.Element {
         const { classes } = this.props;
         return (
             <List
@@ -161,7 +162,7 @@ class App extends React.Component<AppProps, AppState> {
     }
 
     // returns the layout for the panel of secondary application pages (About, License)
-    getSecondaryNavigation() {
+    getSecondaryNavigation(): JSX.Element {
         const { classes } = this.props;
         return (
             <List
@@ -205,7 +206,7 @@ class App extends React.Component<AppProps, AppState> {
     }
 
     // returns the layout for the panel of user pages (Profile, Settings)
-    getUserNavigation() {
+    getUserNavigation(): JSX.Element {
         const { classes } = this.props;
         return (
             <List
@@ -237,7 +238,7 @@ class App extends React.Component<AppProps, AppState> {
     }
 
     // returns the layout for the user details panel (mobile-only)
-    getUserDetails() {
+    getUserDetails(): JSX.Element {
         const { classes } = this.props;
         return (
             <div className={`flexVertBottom ${classes.header}`}>
@@ -247,7 +248,7 @@ class App extends React.Component<AppProps, AppState> {
                         cursor: 'pointer',
                         width: '100%',
                     }}
-                    onClick={() => {
+                    onClick={(): void => {
                         return this.toggleNavMenu();
                     }}
                 >
@@ -259,6 +260,7 @@ class App extends React.Component<AppProps, AppState> {
                             username@domain.com
                         </Typography>
                         <div style={{ flex: '1 1 0px' }} />
+                        {/* eslint-disable-next-line no-undefined */}
                         <ExpandMoreIcon style={this.state.showUserMenu ? { transform: 'rotate(180deg)' } : undefined} />
                     </div>
                 </div>
@@ -267,13 +269,13 @@ class App extends React.Component<AppProps, AppState> {
     }
 
     // returns the navigation drawer used at desktop resolution
-    getDesktopNavigationMenu() {
+    getDesktopNavigationMenu(): JSX.Element {
         const { classes } = this.props;
         return (
             <Drawer
                 variant="permanent"
                 open={true}
-                onClose={() => {
+                onClose={(): void => {
                     return this.toggleDrawer();
                 }}
             >
@@ -293,7 +295,7 @@ class App extends React.Component<AppProps, AppState> {
                     <Toolbar className={`${classes.flush} ${classes.drawerWidthFull}`}>
                         <IconButton
                             color="inherit"
-                            onClick={() => {
+                            onClick={(): void => {
                                 return this.toggleDrawer();
                             }}
                         >
@@ -313,13 +315,13 @@ class App extends React.Component<AppProps, AppState> {
                             overflowY: 'auto',
                             overflowX: 'hidden',
                         }}
-                        onMouseEnter={() => {
+                        onMouseEnter={(): void => {
                             //this.props =
                             setTimeout(() => {
                                 return this.setState({ drawerHover: true });
                             }, 500);
                         }}
-                        onMouseLeave={() => {
+                        onMouseLeave={(): void => {
                             clearTimeout(this.hoverDelay);
                             this.setState({ drawerHover: false });
                         }}
@@ -337,12 +339,12 @@ class App extends React.Component<AppProps, AppState> {
     }
 
     // returns the navigation drawer used at mobile resolution
-    getMobileNavigationMenu() {
+    getMobileNavigationMenu(): JSX.Element {
         const { classes } = this.props;
         return (
             <Drawer
                 open={this.state.drawerOpen}
-                onClose={() => {
+                onClose={(): void => {
                     return this.toggleDrawer();
                 }}
                 classes={{ paper: classes.drawer }}
@@ -367,20 +369,21 @@ class App extends React.Component<AppProps, AppState> {
         );
     }
 
-    NavigationListItem(navProps: NavProps) {
+    NavigationListItem(navProps: NavProps): JSX.Element {
         const { classes } = this.props;
         const open = this.state.drawerHover || this.state.drawerOpen;
-        const action = () => {
+        const action = (): void => {
             return this.setState({ drawerOpen: false, drawerHover: false });
         };
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
         return (
             <ListItem
                 className={`${classes.listItem} ${open ? classes.open : ''}`}
                 activeClassName={classes.listItemSelected}
-                //@ts-ignore
                 component={NavLink}
                 to={navProps.route}
-                onClick={() => {
+                onClick={(): void => {
                     return action();
                 }}
             >

@@ -3,6 +3,7 @@
   method that allows for custom style overrides of the default component visuals.
 */
 
+/*eslint-disable*/
 const styles: any = (theme: any) => {
     return {
         flush: {
