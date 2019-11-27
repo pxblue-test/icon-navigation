@@ -381,6 +381,7 @@ class App extends React.Component<AppProps, AppState> {
             <ListItem
                 className={`${classes.listItem} ${open ? classes.open : ''}`}
                 activeClassName={classes.listItemSelected}
+                //@ts-ignore
                 component={NavLink}
                 to={navProps.route}
                 onClick={(): void => {
