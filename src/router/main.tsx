@@ -16,23 +16,21 @@ import Home from '../pages/home';
 /*
 The main page body, which contains the route definitions
 */
-const Main = (): JSX.Element => {
-    return (
-        <div style={{ padding: '16px' }}>
-            <Switch>
-                <Route exact path="/alerts" component={Alerts} />
-                <Route exact path="/schedule" component={Schedule} />
-                <Route exact path="/logout" component={Logout} />
-                <Route exact path="/products" component={Products} />
-                <Route exact path="/eventlog" component={EventLog} />
-                <Route exact path="/settings" component={Settings} />
-                <Route exact path="/userguide" component={UserGuide} />
-                <Route exact path="/license" component={License} />
-                <Route exact path="/profile" component={Profile} />
-                <Route exact path="/logout" component={Logout} />
-                <Route path="*" component={Home} />
-            </Switch>
-        </div>
-    );
-};
+const Main = (): JSX.Element => (
+    <div style={{ padding: '16px' }}>
+        <Switch>
+            <Route exact path="/alerts" component={Alerts} />
+            <Route exact path="/schedule" component={Schedule} />
+            <Route exact path="/logout" component={Logout} />
+            <Route exact path="/products" component={Products} />
+            <Route exact path="/eventlog" component={EventLog} />
+            <Route exact path="/settings" component={Settings} />
+            <Route exact path="/userguide" component={UserGuide} />
+            <Route exact path="/license" component={License} />
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/logout" component={Logout} />
+            <Route path="*" component={Home} />
+        </Switch>
+    </div>
+);
 export default Main;

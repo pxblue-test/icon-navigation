@@ -1163,10 +1163,10 @@
   resolved "https://registry.yarnpkg.com/@pxblue/colors/-/colors-1.0.13.tgz#1ed76734267f77dd4b390836f61d01439fc35132"
   integrity sha512-tneNNYclHmNNIbo6J7XXEumoJZLBXqeO2LFufWxRvIs5yeVVfaJN3zWREl1oo5KP67aDixYgEKB7LH0oeTL+lQ==
 
-"@pxblue/eslint-config@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@pxblue/eslint-config/-/eslint-config-1.1.1.tgz#d73567263ac37d823b94be4cb59d5e3d875030b2"
-  integrity sha512-m2H5EjB1DkEFLC4xV1kW5UwYVT9gWf/dmKd+UP4x0982y7PI7XGvKEbn0I6e/O8x/jmM/kNsUdyknQEjVZAukg==
+"@pxblue/eslint-config@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@pxblue/eslint-config/-/eslint-config-1.1.2.tgz#42ed0192ea323e97d3e214e3de7fd8a186a12eab"
+  integrity sha512-R2rNxoOysn3V3IlnhWEy5FadPUMp+Oa8z1l79k4Y4im1103P0s+xVlOO4RraXUjqX6uCERqLMrWJK24UdV7fZA==
   dependencies:
     "@typescript-eslint/parser" ">= 2.3.2"
     eslint-config-prettier ">= 6.3.0"

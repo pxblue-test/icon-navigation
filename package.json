@@ -30,7 +30,7 @@
     "prettier": "prettier \"src/**/**.{ts,tsx,js,jsx,json,css,scss,html}\" --write"
   },
   "devDependencies": {
-    "@pxblue/eslint-config": "^1.1.1",
+    "@pxblue/eslint-config": "^1.1.2",
     "@pxblue/prettier-config": "^1.0.1",
     "@types/enzyme": "^3.10.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
