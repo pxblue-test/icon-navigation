@@ -16,7 +16,4 @@ jobs:
           paths:
             - ~/.cache
             - ./node_modules
-      - run:
-          name: Lint
-          command: yarn lint
       - run: yarn test
