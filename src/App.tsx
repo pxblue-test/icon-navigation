@@ -58,7 +58,8 @@ type AppState = {
 The container for the entire app, including the common side-navigation panel and the main body panel.
 */
 class App extends React.Component<AppProps, AppState> {
-    hoverDelay = 0;
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+    hoverDelay: any = 0;
 
     constructor(props: AppProps) {
         super(props);
@@ -104,10 +105,10 @@ class App extends React.Component<AppProps, AppState> {
     }
 
     /*
-    The functions below have been used to abstract various pieces of the navigation
-    menu. This allows them to be shared between the mobile size navigation and the
-    desktop size.
-  */
+      The functions below have been used to abstract various pieces of the navigation
+      menu. This allows them to be shared between the mobile size navigation and the
+      desktop size.
+    */
 
     // returns the layout for the panel of main application pages
     getPrimaryNavigation(): JSX.Element {
@@ -253,7 +254,6 @@ class App extends React.Component<AppProps, AppState> {
                             username@domain.com
                         </Typography>
                         <div style={{ flex: '1 1 0px' }} />
-                        {/* eslint-disable-next-line no-undefined */}
                         <ExpandMoreIcon style={this.state.showUserMenu ? { transform: 'rotate(180deg)' } : undefined} />
                     </div>
                 </div>
@@ -298,8 +298,7 @@ class App extends React.Component<AppProps, AppState> {
                             overflowX: 'hidden',
                         }}
                         onMouseEnter={(): void => {
-                            //this.props =
-                            setTimeout(() => this.setState({ drawerHover: true }), 500);
+                            this.hoverDelay = setTimeout(() => this.setState({ drawerHover: true }), 500);
                         }}
                         onMouseLeave={(): void => {
                             clearTimeout(this.hoverDelay);
@@ -347,12 +346,11 @@ class App extends React.Component<AppProps, AppState> {
         );
     }
 
+    // @ts-ignore
     NavigationListItem(navProps: NavProps): JSX.Element {
         const { classes } = this.props;
         const open = this.state.drawerHover || this.state.drawerOpen;
         const action = (): void => this.setState({ drawerOpen: false, drawerHover: false });
-        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-        // @ts-ignore
         return (
             <ListItem
                 className={`${classes.listItem} ${open ? classes.open : ''}`}
