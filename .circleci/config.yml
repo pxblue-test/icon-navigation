@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     working_directory: ~/icon-navigation
-    docker: 
+    docker:
       - image: circleci/node:12.6-browsers
     steps:
       - checkout
@@ -16,4 +16,7 @@ jobs:
           paths:
             - ~/.cache
             - ./node_modules
+      - run:
+          name: Lint
+          command: yarn lint
       - run: yarn test
