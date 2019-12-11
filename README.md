@@ -6,7 +6,7 @@ This project demonstrates how to build a full-featured, responsive navigation dr
 | Angular | [![CircleCI](https://circleci.com/gh/pxblue/icon-navigation/tree/angular.svg?style=shield)](https://circleci.com/gh/pxblue/icon-navigation/tree/angular) | [View on Stackblitz](https://stackblitz.com/github/pxblue/icon-navigation/tree/angular)
 | React | [![CircleCI](https://circleci.com/gh/pxblue/icon-navigation/tree/react.svg?style=shield)](https://circleci.com/gh/pxblue/icon-navigation/tree/react) | [View on Code Sandbox](https://codesandbox.io/s/github/pxblue/icon-navigation/tree/react)
 | Ionic | [![CircleCI](https://circleci.com/gh/pxblue/icon-navigation/tree/ionic.svg?style=shield)](https://circleci.com/gh/pxblue/icon-navigation/tree/ionic) | [View on Stackblitz](https://stackblitz.com/github/pxblue/icon-navigation/tree/ionic)
-| React Native | [![CircleCI](https://circleci.com/gh/pxblue/icon-navigation/tree/reactnative.svg?style=shield)](https://circleci.com/gh/pxblue/icon-navigation/tree/reactnative) | [View on Snack](https://snack.expo.io/@git/github.com/pxblue/icon-navigation@reactnative)
+| React Native | [![CircleCI](https://circleci.com/gh/pxblue/icon-navigation/tree/reactnative.svg?style=shield)](https://circleci.com/gh/pxblue/icon-navigation/tree/reactnative) | [View on Snack](https://snack.expo.io/@git/github.com/pxblue/icon-navigation@reactnative?preview=true&platform=ios)
 
 ## Running the Example
 ### Angular
